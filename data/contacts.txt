@@ -1,0 +1,7 @@
+Company Name|Geeks' Consulting & IT Services
+Email|contact@geeksconsultingit.com
+Phone|+1 (555) 123-4567
+Address|San Jose, CA
+Hours|Mon–Fri 9am–6pm
+LinkedIn|linkedin.com/in/your-handle
+GitHub|github.com/your-handle
