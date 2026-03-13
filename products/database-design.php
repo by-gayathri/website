@@ -3,6 +3,8 @@ $pageTitle="Database Design • Geeks' Consulting & IT Services";
 include __DIR__ . "/../includes/header.php";
 require_once __DIR__ . "/../includes/recent_products_cookie.php";
 add_recent_product("database-design");
+require_once __DIR__ . "/../includes/most_visited_cookie.php";
+increment_product_visit("database-design");
 ?>
 
 <div class="card">

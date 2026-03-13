@@ -14,6 +14,9 @@ $recent = get_recent_products();
   <p style="margin-top:12px;">
     <a href="recent.php"><strong>Show last five previously visited services →</strong></a>
   </p>
+  <p>
+    <a href="most_visited.php"><strong>Show five most visited services →</strong></a>
+  </p>
 
   <div class="grid" style="margin-top:12px;">
     <?php foreach ($catalog as $slug => $meta): ?>

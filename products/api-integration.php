@@ -2,6 +2,8 @@
 $pageTitle="API Integration • Geeks' Consulting & IT Services";
 include __DIR__ . "/../includes/header.php";
 require_once __DIR__ . "/../includes/recent_products_cookie.php";
+require_once __DIR__ . "/../includes/most_visited_cookie.php";
+increment_product_visit("api-integration");
 add_recent_product("api-integration");
 ?>
 
