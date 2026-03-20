@@ -23,7 +23,8 @@ $pageTitle = $pageTitle ?? "Geeks' Consulting & IT Services";
         <a href="services.php">Services</a>
         <a href="news.php">News</a>
         <a href="contact.php">Contacts</a>
-        <a href="login.php">Users</a>
+        <a href="login.php">Secured Users</a>
+        <a href="list_users.php">DB Users</a>
       </nav>
     </div>
   </header>
