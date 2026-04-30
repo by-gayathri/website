@@ -1,5 +1,5 @@
 <?php
-$pageTitle = "Users • Geeks' Consulting & IT Services";
+$pageTitle = "All Users • Geeks' Consulting & IT Services";
 
 if (!function_exists('curl_init')) {
     die("cURL is not enabled in PHP.");
@@ -50,95 +50,131 @@ $mainError = $mainResult["error"] ?? null;
 $companyAError = $companyAResult["error"] ?? null;
 $companyBError = $companyBResult["error"] ?? null;
 
-
 include "includes/header.php";
 ?>
 
-<div class="card">
-  <h1>Local Users(Geeks' Consulting</h1>
-  <p>Registered users from the database.</p>
+<div class="mb-8">
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">All Users Directory</h1>
+  <p class="text-gray-600">View users from our local database and partner companies</p>
+</div>
+
+<!-- Local Users Section -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
+  <div class="px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-blue-600 to-blue-700">
+    <h2 class="text-lg font-bold text-white">Local Users (Geeks' Consulting)</h2>
+  </div>
 
   <?php if ($mainError): ?>
-    <p><?php echo htmlspecialchars($mainError); ?></p>
+    <div class="px-6 py-8">
+      <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
+        <p class="text-red-800 text-sm font-semibold"><?= htmlspecialchars($mainError) ?></p>
+      </div>
+    </div>
   <?php elseif (!empty($users)): ?>
-    <table style="width:100%; border-collapse:collapse; margin-top:16px;">
-      <thead>
-        <tr>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">ID</th>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Name</th>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($users as $user): ?>
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead class="bg-gray-50 border-b border-gray-200">
           <tr>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['id'] ?? ''); ?></td>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['name'] ?? ''); ?></td>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['email'] ?? ''); ?></td>
+            <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">ID</th>
+            <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Name</th>
+            <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Email</th>
           </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <?php $count = 0; foreach ($users as $user): $count++; ?>
+            <tr class="<?= ($count % 2 === 0) ? 'bg-white' : 'bg-gray-50' ?> hover:bg-blue-50 transition-smooth">
+              <td class="px-6 py-4 text-sm text-gray-900 font-medium"><?= htmlspecialchars($user['id'] ?? '') ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($user['name'] ?? '') ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($user['email'] ?? '') ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
   <?php else: ?>
-    <p>No users found.</p>
+    <div class="px-6 py-8 text-center text-gray-500">
+      <p class="text-sm">No users found.</p>
+    </div>
   <?php endif; ?>
 </div>
 
-<div class="card" style="margin-top:20px;">
-  <h1>Users from company A(Megha's)</h1>
+<!-- Company A Users Section -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
+  <div class="px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-green-600 to-green-700">
+    <h2 class="text-lg font-bold text-white">Company A Users (Megha's)</h2>
+  </div>
 
   <?php if ($companyAError): ?>
-    <p><?php echo htmlspecialchars($companyAError); ?></p>
+    <div class="px-6 py-8">
+      <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
+        <p class="text-red-800 text-sm font-semibold"><?= htmlspecialchars($companyAError) ?></p>
+      </div>
+    </div>
   <?php elseif (!empty($companyAUsers)): ?>
-    <table style="width:100%; border-collapse:collapse; margin-top:16px;">
-      <thead>
-        <tr>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">ID</th>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Name</th>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($companyAUsers as $user): ?>
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead class="bg-gray-50 border-b border-gray-200">
           <tr>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['id'] ?? ''); ?></td>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['name'] ?? ''); ?></td>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['email'] ?? ''); ?></td>
+            <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">ID</th>
+            <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Name</th>
+            <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Email</th>
           </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <?php $count = 0; foreach ($companyAUsers as $user): $count++; ?>
+            <tr class="<?= ($count % 2 === 0) ? 'bg-white' : 'bg-gray-50' ?> hover:bg-blue-50 transition-smooth">
+              <td class="px-6 py-4 text-sm text-gray-900 font-medium"><?= htmlspecialchars($user['id'] ?? '') ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($user['name'] ?? '') ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($user['email'] ?? '') ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
   <?php else: ?>
-    <p>No users found for company A.</p>
+    <div class="px-6 py-8 text-center text-gray-500">
+      <p class="text-sm">No users found for Company A.</p>
+    </div>
   <?php endif; ?>
 </div>
 
-<div class="card" style="margin-top:20px;">
-  <h1>Users from companyB(Mansi's)</h1>
+<!-- Company B Users Section -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden mb-8">
+  <div class="px-6 py-4 border-b border-gray-200 bg-gradient-to-r from-purple-600 to-purple-700">
+    <h2 class="text-lg font-bold text-white">Company B Users (Mansi's)</h2>
+  </div>
 
   <?php if ($companyBError): ?>
-    <p><?php echo htmlspecialchars($companyBError); ?></p>
+    <div class="px-6 py-8">
+      <div class="p-4 bg-red-50 border border-red-200 rounded-lg">
+        <p class="text-red-800 text-sm font-semibold"><?= htmlspecialchars($companyBError) ?></p>
+      </div>
+    </div>
   <?php elseif (!empty($companyBUsers)): ?>
-    <table style="width:100%; border-collapse:collapse; margin-top:16px;">
-      <thead>
-        <tr>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">ID</th>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Name</th>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Email</th>
-        </tr>
-      </thead>
-      <tbody>
-        <?php foreach ($companyBUsers as $user): ?>
+    <div class="overflow-x-auto">
+      <table class="w-full">
+        <thead class="bg-gray-50 border-b border-gray-200">
           <tr>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['id'] ?? ''); ?></td>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['name'] ?? ''); ?></td>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['email'] ?? ''); ?></td>
+            <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">ID</th>
+            <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Name</th>
+            <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Email</th>
           </tr>
-        <?php endforeach; ?>
-      </tbody>
-    </table>
+        </thead>
+        <tbody class="divide-y divide-gray-200">
+          <?php $count = 0; foreach ($companyBUsers as $user): $count++; ?>
+            <tr class="<?= ($count % 2 === 0) ? 'bg-white' : 'bg-gray-50' ?> hover:bg-blue-50 transition-smooth">
+              <td class="px-6 py-4 text-sm text-gray-900 font-medium"><?= htmlspecialchars($user['id'] ?? '') ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($user['name'] ?? '') ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($user['email'] ?? '') ?></td>
+            </tr>
+          <?php endforeach; ?>
+        </tbody>
+      </table>
+    </div>
   <?php else: ?>
-    <p>No users found for company B.</p>
+    <div class="px-6 py-8 text-center text-gray-500">
+      <p class="text-sm">No users found for Company B.</p>
+    </div>
   <?php endif; ?>
 </div>
 

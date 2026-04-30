@@ -7,7 +7,7 @@
 $host = "localhost";
 $dbname = "userslist";
 $username = "appuser";
-$password = "x";
+$password = "password123";
 
 // =========================
 // CONNECT TO DATABASE
@@ -58,11 +58,6 @@ if ($_SERVER["REQUEST_METHOD"] === "POST" && isset($_POST["create_user"])) {
 
             if ($stmt->execute()) {
                 $message = "User created successfully.";
-                echo "<script>
-                window.onload = function() {
-                    document.getElementById('userFormContainer').style.display = 'none';
-                };
-                </script>";
             } else {
                 $error = "Failed to create user: " . $stmt->error;
             }
@@ -124,273 +119,222 @@ if ($search !== "") {
 }
 ?>
 
-<?php $pageTitle="My Users"; include "includes/header.php"; ?>
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Users Management</title>
-    <script>
-    function toggleForm() {
-        const form = document.getElementById("userFormContainer");
-        const btn = document.getElementById("toggleBtn");
+<?php $pageTitle="My Users • Geeks' Consulting & IT Services"; include "includes/header.php"; ?>
 
-        if (form.style.display === "none") {
-            form.style.display = "block";
-            btn.innerText = "Close Form";
-        } else {
-            form.style.display = "none";
-            btn.innerText = "+ Create User";
-        }
-    }
-    </script>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4f7fb;
-            margin: 0;
-            padding: 20px;
-            color: #222;
-        }
-
-        .container {
-            max-width: 1200px;
-            margin: auto;
-        }
-
-        .card {
-            background: #fff;
-            border-radius: 10px;
-            padding: 20px;
-            margin-bottom: 20px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
-        }
-
-        h1, h2 {
-            margin-top: 0;
-        }
-
-        .message {
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            background: #e7f7e7;
-            color: #1f6b1f;
-        }
-
-        .error {
-            padding: 12px;
-            border-radius: 6px;
-            margin-bottom: 15px;
-            background: #fdeaea;
-            color: #a12626;
-        }
-
-        form {
-            display: grid;
-            gap: 12px;
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-            gap: 12px;
-        }
-
-        input, textarea, button {
-            padding: 10px;
-            border: 1px solid #ccc;
-            border-radius: 6px;
-            font-size: 14px;
-            width: 100%;
-            box-sizing: border-box;
-        }
-
-        textarea {
-            resize: vertical;
-            min-height: 80px;
-        }
-
-        button {
-            background: #1d72f3;
-            color: white;
-            border: none;
-            cursor: pointer;
-        }
-
-        button:hover {
-            background: #1559c1;
-        }
-
-        .search-bar {
-            display: flex;
-            gap: 10px;
-            flex-wrap: wrap;
-        }
-
-        .search-bar input {
-            flex: 1;
-            min-width: 250px;
-        }
-
-        table {
-            width: 100%;
-            border-collapse: collapse;
-            margin-top: 15px;
-            background: white;
-        }
-
-        th, td {
-            padding: 12px 10px;
-            border: 1px solid #ddd;
-            text-align: left;
-            vertical-align: top;
-        }
-
-        th {
-            background: #f0f4f8;
-        }
-
-        .small-link {
-            display: inline-block;
-            margin-top: 10px;
-            color: #1d72f3;
-            text-decoration: none;
-        }
-
-        .small-link:hover {
-            text-decoration: underline;
-        }
-
-        @media (max-width: 768px) {
-            table {
-                display: block;
-                overflow-x: auto;
-            }
-        }
-    </style>
-</head>
-<body>
-<div class="container">
-    <div class="card">
-        <h1>Users Management</h1>
-
-        <?php if ($message !== ""): ?>
-            <div class="message"><?php echo htmlspecialchars($message); ?></div>
-        <?php endif; ?>
-
-        <?php if ($error !== ""): ?>
-            <div class="error"><?php echo htmlspecialchars($error); ?></div>
-        <?php endif; ?>
-
-        <form method="GET" action="">
-            <div class="search-bar">
-                <input
-                    type="text"
-                    name="search"
-                    placeholder="Search by name, email, home phone, or cell phone"
-                    value="<?php echo htmlspecialchars($search); ?>"
-                >
-                <button type="submit">Search</button>
-            </div>
-        </form>
-
-        <a class="small-link" href="users.php">Clear Search</a>
-    </div>
-
-    <div class="card">
-        <h2>User Actions</h2>
-
-        <button onclick="toggleForm()" id="toggleBtn">+ Create User</button>
-
-        <div id="userFormContainer" style="display:none; margin-top:15px;">
-            <h3>Create User</h3>
-
-            <form method="POST" action="">
-                <div class="form-grid">
-                    <div>
-                        <label>Name</label>
-                        <input type="text" name="name" required>
-                    </div>
-
-                    <div>
-                        <label>Email</label>
-                        <input type="email" name="email" required>
-                    </div>
-
-                    <div>
-                        <label>First Name</label>
-                        <input type="text" name="first_name" required>
-                    </div>
-
-                    <div>
-                        <label>Last Name</label>
-                        <input type="text" name="last_name" required>
-                    </div>
-
-                    <div>
-                        <label>Home Phone</label>
-                        <input type="text" name="home_phone" required>
-                    </div>
-
-                    <div>
-                        <label>Cell Phone</label>
-                        <input type="text" name="cell_phone" required>
-                    </div>
-
-                    <div style="grid-column: 1 / -1;">
-                        <label>Home Address</label>
-                        <textarea name="home_address" required></textarea>
-                    </div>
-                </div>
-
-                <br>
-                <button type="submit" name="create_user">Save User</button>
-                <button type="button" onclick="toggleForm()" style="background:#aaa;">Cancel</button>
-            </form>
-        </div>
-    </div>
-
-    <div class="card">
-        <h2>User List</h2>
-
-        <table>
-            <thead>
-                <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>First Name</th>
-                    <th>Last Name</th>
-                    <th>Home Address</th>
-                    <th>Home Phone</th>
-                    <th>Cell Phone</th>
-                </tr>
-            </thead>
-            <tbody>
-                <?php if ($result && $result->num_rows > 0): ?>
-                    <?php while ($row = $result->fetch_assoc()): ?>
-                        <tr>
-                            <td><?php echo htmlspecialchars($row["name"]); ?></td>
-                            <td><?php echo htmlspecialchars($row["email"]); ?></td>
-                            <td><?php echo htmlspecialchars($row["first_name"]); ?></td>
-                            <td><?php echo htmlspecialchars($row["last_name"]); ?></td>
-                            <td><?php echo htmlspecialchars($row["home_address"]); ?></td>
-                            <td><?php echo htmlspecialchars($row["home_phone"]); ?></td>
-                            <td><?php echo htmlspecialchars($row["cell_phone"]); ?></td>
-                        </tr>
-                    <?php endwhile; ?>
-                <?php else: ?>
-                    <tr>
-                        <td colspan="7">No users found.</td>
-                    </tr>
-                <?php endif; ?>
-            </tbody>
-        </table>
-    </div>
+<div class="mb-8">
+  <h1 class="text-3xl font-bold text-gray-900 mb-2">User Management Dashboard</h1>
+  <p class="text-gray-600">Manage and view all users in the system</p>
 </div>
-</body>
-</html>
+
+<!-- Status Messages -->
+<?php if ($message !== ""): ?>
+  <div class="mb-6 p-4 bg-green-50 border border-green-200 rounded-lg">
+    <p class="text-green-800 text-sm font-semibold"><?= htmlspecialchars($message) ?></p>
+  </div>
+<?php endif; ?>
+
+<?php if ($error !== ""): ?>
+  <div class="mb-6 p-4 bg-red-50 border border-red-200 rounded-lg">
+    <p class="text-red-800 text-sm font-semibold"><?= htmlspecialchars($error) ?></p>
+  </div>
+<?php endif; ?>
+
+<div class="grid grid-cols-1 gap-6 mb-8">
+  <!-- Search Card -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <h2 class="text-lg font-bold text-gray-900 mb-4">Search Users</h2>
+    <form method="GET" action="" class="flex flex-col sm:flex-row gap-4">
+      <input
+        type="text"
+        name="search"
+        placeholder="Search by name, email, phone..."
+        value="<?= htmlspecialchars($search) ?>"
+        class="flex-1 px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+      />
+      <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-smooth whitespace-nowrap">
+        Search
+      </button>
+      <a href="users.php" class="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-smooth whitespace-nowrap text-center">
+        Clear
+      </a>
+    </form>
+  </div>
+
+  <!-- Create User Card -->
+  <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-6">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-lg font-bold text-gray-900">Create New User</h2>
+      <button onclick="toggleForm()" id="toggleBtn" class="px-4 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-smooth text-sm">
+        + Add User
+      </button>
+    </div>
+
+    <div id="userFormContainer" style="display:none;">
+      <form method="POST" action="">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mb-4">
+          <div>
+            <label for="name" class="block text-sm font-semibold text-gray-900 mb-2">Full Name *</label>
+            <input
+              type="text"
+              id="name"
+              name="name"
+              placeholder="e.g., John Doe"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label for="email" class="block text-sm font-semibold text-gray-900 mb-2">Email *</label>
+            <input
+              type="email"
+              id="email"
+              name="email"
+              placeholder="e.g., john@example.com"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label for="first_name" class="block text-sm font-semibold text-gray-900 mb-2">First Name *</label>
+            <input
+              type="text"
+              id="first_name"
+              name="first_name"
+              placeholder="First name"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label for="last_name" class="block text-sm font-semibold text-gray-900 mb-2">Last Name *</label>
+            <input
+              type="text"
+              id="last_name"
+              name="last_name"
+              placeholder="Last name"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label for="home_phone" class="block text-sm font-semibold text-gray-900 mb-2">Home Phone *</label>
+            <input
+              type="text"
+              id="home_phone"
+              name="home_phone"
+              placeholder="e.g., (555) 123-4567"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div>
+            <label for="cell_phone" class="block text-sm font-semibold text-gray-900 mb-2">Cell Phone *</label>
+            <input
+              type="text"
+              id="cell_phone"
+              name="cell_phone"
+              placeholder="e.g., (555) 987-6543"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500"
+            />
+          </div>
+
+          <div class="md:col-span-2">
+            <label for="home_address" class="block text-sm font-semibold text-gray-900 mb-2">Home Address *</label>
+            <textarea
+              id="home_address"
+              name="home_address"
+              placeholder="Street address, city, state, zip"
+              required
+              class="w-full px-4 py-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500 h-24"
+            ></textarea>
+          </div>
+        </div>
+
+        <div class="flex gap-4">
+          <button
+            type="submit"
+            name="create_user"
+            class="flex-1 bg-blue-600 text-white py-2 rounded-lg hover:bg-blue-700 transition-smooth font-semibold"
+          >
+            Save User
+          </button>
+          <button
+            type="button"
+            onclick="toggleForm()"
+            class="flex-1 bg-gray-200 text-gray-800 py-2 rounded-lg hover:bg-gray-300 transition-smooth font-semibold"
+          >
+            Cancel
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
+
+<!-- Users Table -->
+<div class="bg-white rounded-lg shadow-sm border border-gray-200 overflow-hidden">
+  <div class="px-6 py-4 border-b border-gray-200">
+    <h2 class="text-lg font-bold text-gray-900">Users List</h2>
+  </div>
+  
+  <div class="overflow-x-auto">
+    <table class="w-full">
+      <thead class="bg-gray-50 sticky top-0 border-b border-gray-200">
+        <tr>
+          <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Name</th>
+          <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Email</th>
+          <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">First Name</th>
+          <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Last Name</th>
+          <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Home Phone</th>
+          <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Cell Phone</th>
+          <th class="px-6 py-3 text-left text-xs font-bold text-gray-900 uppercase tracking-wider">Address</th>
+        </tr>
+      </thead>
+      <tbody class="divide-y divide-gray-200">
+        <?php if ($result && $result->num_rows > 0): ?>
+          <?php $count = 0; while ($row = $result->fetch_assoc()): $count++; ?>
+            <tr class="<?= ($count % 2 === 0) ? 'bg-white' : 'bg-gray-50' ?> hover:bg-blue-50 transition-smooth">
+              <td class="px-6 py-4 text-sm text-gray-900 font-medium"><?= htmlspecialchars($row["name"]) ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($row["email"]) ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($row["first_name"]) ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($row["last_name"]) ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($row["home_phone"]) ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($row["cell_phone"]) ?></td>
+              <td class="px-6 py-4 text-sm text-gray-600"><?= htmlspecialchars($row["home_address"]) ?></td>
+            </tr>
+          <?php endwhile; ?>
+        <?php else: ?>
+          <tr>
+            <td colspan="7" class="px-6 py-8 text-center text-gray-500">
+              <p class="text-sm">No users found. <?php if ($search): ?>Try a different search term.<?php endif; ?></p>
+            </td>
+          </tr>
+        <?php endif; ?>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  function toggleForm() {
+    const form = document.getElementById("userFormContainer");
+    const btn = document.getElementById("toggleBtn");
+
+    if (form.style.display === "none") {
+      form.style.display = "block";
+      btn.innerText = "✕ Close Form";
+    } else {
+      form.style.display = "none";
+      btn.innerText = "+ Add User";
+    }
+  }
+</script>
 
 <?php
 if (isset($stmt) && $stmt instanceof mysqli_stmt) {
@@ -398,4 +342,5 @@ if (isset($stmt) && $stmt instanceof mysqli_stmt) {
 }
 $conn->close();
 ?>
+
 <?php include "includes/footer.php"; ?>
