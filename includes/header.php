@@ -49,7 +49,9 @@ $pageTitle = $pageTitle ?? "Geeks' Consulting & IT Services";
         <div class="flex items-center gap-3">
           <div class="hidden sm:flex items-center gap-2">
             <a href="login.php" class="px-3 py-2 text-sm text-gray-700 rounded-md transition-smooth hover:bg-gray-100">Login</a>
-            <a href="users.php" class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-md transition-smooth hover:bg-blue-700">Users</a>
+            <a href="secure/users.php" class="px-3 py-2 text-sm font-medium text-white bg-green-600 rounded-md transition-smooth hover:bg-green-700">Secured Users</a>
+            <a href="list_users.php" class="px-3 py-2 text-sm font-medium text-white bg-purple-600 rounded-md transition-smooth hover:bg-purple-700">Combined Users</a>
+            <a href="users.php" class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-md transition-smooth hover:bg-blue-700">All Users</a>
           </div>
           <!-- Mobile menu button -->
           <button class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100" onclick="toggleMobileMenu()">
@@ -68,7 +70,9 @@ $pageTitle = $pageTitle ?? "Geeks' Consulting & IT Services";
         <a href="news.php" class="block px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">News</a>
         <a href="contact.php" class="block px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">Contacts</a>
         <a href="login.php" class="block px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">Login</a>
-        <a href="users.php" class="block px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">Users</a>
+        <a href="secure/users.php" class="block px-3 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700">Secured Users</a>
+        <a href="list_users.php" class="block px-3 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700">Combined Users</a>
+        <a href="users.php" class="block px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">All Users</a>
       </div>
     </div>
   </header>
