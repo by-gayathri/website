@@ -24,7 +24,8 @@ $pageTitle = $pageTitle ?? "Geeks' Consulting & IT Services";
         <a href="news.php">News</a>
         <a href="contact.php">Contacts</a>
         <a href="login.php">Secured Users</a>
-        <a href="list_users.php">DB Users</a>
+        <a href="list_users.php">Combined(DB) Users</a>
+        <a href="users.php">My Users</a>
       </nav>
     </div>
   </header>

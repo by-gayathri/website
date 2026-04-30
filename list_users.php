@@ -67,7 +67,6 @@ include "includes/header.php";
           <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">ID</th>
           <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Name</th>
           <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Email</th>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Created</th>
         </tr>
       </thead>
       <tbody>
@@ -76,7 +75,6 @@ include "includes/header.php";
             <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['id'] ?? ''); ?></td>
             <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['name'] ?? ''); ?></td>
             <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['email'] ?? ''); ?></td>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['created_at'] ?? ''); ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
@@ -98,7 +96,6 @@ include "includes/header.php";
           <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">ID</th>
           <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Name</th>
           <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Email</th>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Created</th>
         </tr>
       </thead>
       <tbody>
@@ -107,7 +104,6 @@ include "includes/header.php";
             <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['id'] ?? ''); ?></td>
             <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['name'] ?? ''); ?></td>
             <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['email'] ?? ''); ?></td>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['created_at'] ?? ''); ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
@@ -129,7 +125,6 @@ include "includes/header.php";
           <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">ID</th>
           <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Name</th>
           <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Email</th>
-          <th style="text-align:left; padding:10px; border-bottom:1px solid #ccc;">Created</th>
         </tr>
       </thead>
       <tbody>
@@ -138,7 +133,6 @@ include "includes/header.php";
             <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['id'] ?? ''); ?></td>
             <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['name'] ?? ''); ?></td>
             <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['email'] ?? ''); ?></td>
-            <td style="padding:10px; border-bottom:1px solid #eee;"><?php echo htmlspecialchars($user['created_at'] ?? ''); ?></td>
           </tr>
         <?php endforeach; ?>
       </tbody>
