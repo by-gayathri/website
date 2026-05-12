@@ -8,6 +8,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
+// Ensure database connection is available
+if (!isset($GLOBALS['pdo'])) {
+    require_once __DIR__ . "/../db.php";
+}
+
 function get_rating_stars($rating) {
     $filled = '★';
     $empty = '☆';
@@ -17,37 +22,48 @@ function get_rating_stars($rating) {
 function display_reviews_section($product_slug) {
     global $pdo;
     
-    // Get average rating
-    $stmt = $pdo->prepare("
-        SELECT 
-            COUNT(*) as total_reviews,
-            ROUND(AVG(rating), 1) as average_rating
-        FROM reviews
-        WHERE product_slug = ?
-    ");
-    $stmt->execute([$product_slug]);
-    $stats = $stmt->fetch();
-    
-    $avg_rating = $stats['average_rating'] ?? 0;
-    $total_reviews = $stats['total_reviews'] ?? 0;
-    
-    // Get reviews
-    $stmt = $pdo->prepare("
-        SELECT 
-            r.id,
-            r.rating,
-            r.comment,
-            r.created_at,
-            COALESCE(r.guest_name, u.name, 'Anonymous') as reviewer_name
-        FROM reviews r
-        LEFT JOIN users u ON r.user_id = u.id
-        WHERE r.product_slug = ?
-        ORDER BY r.created_at DESC
-        LIMIT 20
-    ");
-    $stmt->execute([$product_slug]);
-    $reviews = $stmt->fetchAll();
-    ?>
+    try {
+        // Verify reviews table exists
+        $stmt = $pdo->query("SHOW TABLES LIKE 'reviews'");
+        if ($stmt->rowCount() === 0) {
+            echo '<div class="bg-yellow-50 border border-yellow-200 rounded-lg p-4 mb-8"><p class="text-yellow-800">Reviews table not yet initialized. Please run schema.sql</p></div>';
+            return;
+        }
+        
+        // Get average rating
+        $stmt = $pdo->prepare("
+            SELECT 
+                COUNT(*) as total_reviews,
+                ROUND(AVG(rating), 1) as average_rating
+            FROM reviews
+            WHERE product_slug = ?
+        ");
+        $stmt->execute([$product_slug]);
+        $stats = $stmt->fetch();
+        
+        $avg_rating = $stats['average_rating'] ?? 0;
+        $total_reviews = $stats['total_reviews'] ?? 0;
+        
+        // Get reviews
+        $stmt = $pdo->prepare("
+            SELECT 
+                r.id,
+                r.rating,
+                r.comment,
+                r.created_at,
+                COALESCE(r.guest_name, u.name, 'Anonymous') as reviewer_name
+            FROM reviews r
+            LEFT JOIN users u ON r.user_id = u.id
+            WHERE r.product_slug = ?
+            ORDER BY r.created_at DESC
+            LIMIT 20
+        ");
+        $stmt->execute([$product_slug]);
+        $reviews = $stmt->fetchAll();
+    } catch (Exception $e) {
+        echo '<div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-8"><p class="text-red-800">Error loading reviews: ' . htmlspecialchars($e->getMessage()) . '</p></div>';
+        return;
+    }
     
 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
     <div class="mb-8">
