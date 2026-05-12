@@ -1,6 +1,13 @@
 <?php
 // includes/header.php
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
 $pageTitle = $pageTitle ?? "Geeks' Consulting & IT Services";
+$is_user_logged_in = !empty($_SESSION["user_id"]);
+$is_admin_logged_in = !empty($_SESSION["is_admin"]);
+$user_name = $_SESSION["user_name"] ?? null;
 ?>
 <!doctype html>
 <html lang="en">
@@ -48,10 +55,26 @@ $pageTitle = $pageTitle ?? "Geeks' Consulting & IT Services";
         <!-- Admin Links & Mobile Menu Button -->
         <div class="flex items-center gap-3">
           <div class="hidden sm:flex items-center gap-2">
-            <a href="/login.php" class="px-3 py-2 text-sm text-gray-700 rounded-md transition-smooth hover:bg-gray-100">Login</a>
-            <a href="/secure/users.php" class="px-3 py-2 text-sm font-medium text-white bg-green-600 rounded-md transition-smooth hover:bg-green-700">Secured Users</a>
-            <a href="/list_users.php" class="px-3 py-2 text-sm font-medium text-white bg-purple-600 rounded-md transition-smooth hover:bg-purple-700">Combined Users</a>
-            <a href="/users.php" class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-md transition-smooth hover:bg-blue-700">All Users</a>
+            <?php if ($is_user_logged_in): ?>
+              <!-- User Logged In -->
+              <a href="/dashboard.php" class="px-3 py-2 text-sm font-medium text-blue-600 rounded-md transition-smooth hover:bg-blue-50">
+                Dashboard
+              </a>
+              <a href="/logout.php" class="px-3 py-2 text-sm font-medium text-white bg-red-600 rounded-md transition-smooth hover:bg-red-700">
+                Logout
+              </a>
+            <?php elseif ($is_admin_logged_in): ?>
+              <!-- Admin Logged In -->
+              <a href="/secure/users.php" class="px-3 py-2 text-sm font-medium text-white bg-green-600 rounded-md transition-smooth hover:bg-green-700">Admin Dashboard</a>
+              <a href="/logout.php" class="px-3 py-2 text-sm font-medium text-white bg-red-600 rounded-md transition-smooth hover:bg-red-700">Logout</a>
+            <?php else: ?>
+              <!-- Not Logged In -->
+              <a href="/login.php?type=user" class="px-3 py-2 text-sm text-gray-700 rounded-md transition-smooth hover:bg-gray-100">User Login</a>
+              <a href="/register.php" class="px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-md transition-smooth hover:bg-blue-700">Register</a>
+              <a href="/login.php?type=admin" class="px-3 py-2 text-sm font-medium text-white bg-green-600 rounded-md transition-smooth hover:bg-green-700">Admin Login</a>
+              <a href="/list_users.php" class="px-3 py-2 text-sm font-medium text-white bg-purple-600 rounded-md transition-smooth hover:bg-purple-700">Combined Users</a>
+              <a href="/users.php" class="px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-md transition-smooth hover:bg-blue-800">All Users</a>
+            <?php endif; ?>
           </div>
           <!-- Mobile menu button -->
           <button class="md:hidden p-2 rounded-md text-gray-700 hover:bg-gray-100" onclick="toggleMobileMenu()">
@@ -69,10 +92,23 @@ $pageTitle = $pageTitle ?? "Geeks' Consulting & IT Services";
         <a href="/services.php" class="block px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">Services</a>
         <a href="/news.php" class="block px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">News</a>
         <a href="/contact.php" class="block px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">Contacts</a>
-        <a href="/login.php" class="block px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">Login</a>
-        <a href="/secure/users.php" class="block px-3 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700">Secured Users</a>
-        <a href="/list_users.php" class="block px-3 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700">Combined Users</a>
-        <a href="/users.php" class="block px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">All Users</a>
+        
+        <?php if ($is_user_logged_in): ?>
+          <hr class="my-2 border-gray-200">
+          <a href="/dashboard.php" class="block px-3 py-2 text-sm font-medium text-blue-600 rounded-md hover:bg-blue-50">Dashboard</a>
+          <a href="/logout.php" class="block px-3 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700">Logout</a>
+        <?php elseif ($is_admin_logged_in): ?>
+          <hr class="my-2 border-gray-200">
+          <a href="/secure/users.php" class="block px-3 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700">Admin Dashboard</a>
+          <a href="/logout.php" class="block px-3 py-2 text-sm font-medium text-white bg-red-600 rounded-md hover:bg-red-700">Logout</a>
+        <?php else: ?>
+          <hr class="my-2 border-gray-200">
+          <a href="/login.php?type=user" class="block px-3 py-2 text-sm font-medium text-gray-700 rounded-md hover:bg-gray-100">User Login</a>
+          <a href="/register.php" class="block px-3 py-2 text-sm font-medium text-white bg-blue-600 rounded-md hover:bg-blue-700">Register</a>
+          <a href="/login.php?type=admin" class="block px-3 py-2 text-sm font-medium text-white bg-green-600 rounded-md hover:bg-green-700">Admin Login</a>
+          <a href="/list_users.php" class="block px-3 py-2 text-sm font-medium text-white bg-purple-600 rounded-md hover:bg-purple-700">Combined Users</a>
+          <a href="/users.php" class="block px-3 py-2 text-sm font-medium text-white bg-blue-700 rounded-md hover:bg-blue-800">All Users</a>
+        <?php endif; ?>
       </div>
     </div>
   </header>
