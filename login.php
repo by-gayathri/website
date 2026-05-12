@@ -37,7 +37,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
   <header class="sticky top-0 z-40 bg-white border-b border-gray-200 shadow-sm">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       <div class="flex items-center justify-between h-16">
-        <a href="index.php" class="flex items-center gap-2 no-underline">
+        <a href="/index.php" class="flex items-center gap-2 no-underline">
           <div class="w-8 h-8 bg-gradient-to-br from-blue-600 to-blue-800 rounded-lg flex items-center justify-center">
             <span class="text-white font-bold text-sm">GC</span>
           </div>
@@ -46,7 +46,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             <p class="text-xs text-gray-600 m-0">Build • Automate • Deploy</p>
           </div>
         </a>
-        <a href="index.php" class="text-gray-600 hover:text-gray-900 transition-smooth">← Back to Home</a>
+        <a href="/index.php" class="text-gray-600 hover:text-gray-900 transition-smooth">← Back to Home</a>
       </div>
     </div>
   </header>
@@ -106,7 +106,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
         <!-- Footer -->
         <div class="mt-6 pt-6 border-t border-gray-200">
           <p class="text-center text-sm text-gray-600">
-            Need help? <a href="contact.php" class="text-blue-600 font-semibold hover:text-blue-700">Contact us</a>
+            Need help? <a href="/contact.php" class="text-blue-600 font-semibold hover:text-blue-700">Contact us</a>
           </p>
         </div>
       </div>
@@ -114,7 +114,7 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
       <!-- Alternative Links -->
       <div class="mt-6 text-center">
         <p class="text-gray-600 text-sm">
-          <a href="index.php" class="text-blue-600 font-semibold hover:text-blue-700">← Back to Home</a>
+          <a href="/index.php" class="text-blue-600 font-semibold hover:text-blue-700">← Back to Home</a>
         </p>
       </div>
     </div>

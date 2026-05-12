@@ -154,7 +154,7 @@ if ($search !== "") {
       <button type="submit" class="px-6 py-2 bg-blue-600 text-white rounded-lg hover:bg-blue-700 transition-smooth whitespace-nowrap">
         Search
       </button>
-      <a href="users.php" class="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-smooth whitespace-nowrap text-center">
+      <a href="/users.php" class="px-6 py-2 bg-gray-200 text-gray-800 rounded-lg hover:bg-gray-300 transition-smooth whitespace-nowrap text-center">
         Clear
       </a>
     </form>

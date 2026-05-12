@@ -64,7 +64,7 @@ function display_reviews_section($product_slug) {
         echo '<div class="bg-red-50 border border-red-200 rounded-lg p-4 mb-8"><p class="text-red-800">Error loading reviews: ' . htmlspecialchars($e->getMessage()) . '</p></div>';
         return;
     }
-    
+    ?>
 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
     <div class="mb-8">
         <h2 class="text-2xl font-bold text-gray-900 mb-4">Customer Reviews & Ratings</h2>
