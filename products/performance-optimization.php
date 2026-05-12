@@ -1,6 +1,7 @@
 <?php
 require_once __DIR__ . "/../includes/recent_products_cookie.php";
 require_once __DIR__ . "/../includes/most_visited_cookie.php";
+require_once __DIR__ . "/../includes/reviews.php";
 add_recent_product("performance-optimization");
 increment_product_visit("performance-optimization");
 $pageTitle="Performance Optimization • Geeks' Consulting & IT Services";
@@ -83,6 +84,8 @@ include __DIR__ . "/../includes/header.php";
     </div>
   </div>
 </div>
+
+<?php display_reviews_section("performance-optimization"); ?>
 
 <!-- Related Services -->
 <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8">
