@@ -19,12 +19,7 @@ include __DIR__ . "/../includes/header.php";
 <div class="grid lg:grid-cols-3 gap-8 mb-12">
   <div class="lg:col-span-2">
     <!-- Hero Image -->
-    <div class="bg-gradient-to-br from-orange-500 to-orange-700 rounded-lg p-16 text-white text-center mb-8">
-      <svg class="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 6V4m0 2a2 2 0 100 4m0-4a2 2 0 110 4m-6 8a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4m6 6v10m6-2a2 2 0 100-4m0 4a2 2 0 110-4m0 4v2m0-6V4"></path>
-      </svg>
-      <h2 class="text-2xl font-bold">Content Management Made Easy</h2>
-    </div>
+    <img src="/assets/img/cms.png" alt="CMS" class="w-full rounded-lg object-cover mb-8" style="height: 300px;">
 
     <!-- Features -->
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">

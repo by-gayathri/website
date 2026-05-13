@@ -19,12 +19,7 @@ include __DIR__ . "/../includes/header.php";
 <div class="grid lg:grid-cols-3 gap-8 mb-12">
   <div class="lg:col-span-2">
     <!-- Hero Image -->
-    <div class="bg-gradient-to-br from-cyan-500 to-cyan-700 rounded-lg p-16 text-white text-center mb-8">
-      <svg class="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"></path>
-      </svg>
-      <h2 class="text-2xl font-bold">Lightning Fast Performance</h2>
-    </div>
+    <img src="/assets/img/performance.jpeg" alt="Performance Optimization" class="w-full rounded-lg object-cover mb-8" style="height: 300px;">
 
     <!-- Features -->
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">

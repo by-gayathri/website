@@ -19,12 +19,7 @@ include __DIR__ . "/../includes/header.php";
 <div class="grid lg:grid-cols-3 gap-8 mb-12">
   <div class="lg:col-span-2">
     <!-- Hero Image -->
-    <div class="bg-gradient-to-br from-blue-500 to-blue-700 rounded-lg p-16 text-white text-center mb-8">
-      <svg class="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m6 2a9 9 0 11-18 0 9 9 0 0118 0z"></path>
-      </svg>
-      <h2 class="text-2xl font-bold">Server-Side Excellence</h2>
-    </div>
+    <img src="/assets/img/backend.png" alt="Backend Development" class="w-full rounded-lg object-cover mb-8" style="height: 300px;">
 
     <!-- Features -->
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
@@ -68,7 +63,7 @@ include __DIR__ . "/../includes/header.php";
         </li>
       </ul>
     </div>
-  </div>
+  </img>
 
   <!-- Sidebar CTA -->
   <div class="lg:col-span-1">
