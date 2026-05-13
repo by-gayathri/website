@@ -157,23 +157,13 @@ if ($_SERVER["REQUEST_METHOD"] === "POST") {
             />
           </div>
 
-          <!-- Submit Button and SSO -->
-          <div class="flex gap-3 mt-6">
-            <button
-              type="submit"
-              class="flex-1 bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-smooth"
-            >
-              Sign In
-            </button>
-            <a
-              href="https://mansiguptacs.com/ourmarketplace/"
-              target="_blank"
-              rel="noopener noreferrer"
-              class="flex-1 bg-green-600 text-white font-semibold py-2 rounded-lg hover:bg-green-700 focus:outline-none focus:ring-2 focus:ring-green-500 focus:ring-offset-2 transition-smooth text-center flex items-center justify-center no-underline"
-            >
-              SSO
-            </a>
-          </div>
+          <!-- Submit Button -->
+          <button
+            type="submit"
+            class="w-full bg-blue-600 text-white font-semibold py-2 rounded-lg hover:bg-blue-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 transition-smooth mt-6"
+          >
+            Sign In
+          </button>
         </form>
 
         <!-- Footer -->
