@@ -19,7 +19,12 @@ include __DIR__ . "/../includes/header.php";
 <div class="grid lg:grid-cols-3 gap-8 mb-12">
   <div class="lg:col-span-2">
     <!-- Hero Image -->
-    <img src="/assets/img/database-design.png" alt="Database Design" class="w-full rounded-lg object-cover mb-8" style="height: 300px;">
+    <div class="bg-gradient-to-br from-indigo-500 to-indigo-700 rounded-lg p-16 text-white text-center mb-8">
+      <svg class="w-24 h-24 mx-auto mb-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 7v10c0 2.21 3.582 4 8 4s8-1.79 8-4V7m0 0c0 2.21-3.582 4-8 4s-8-1.79-8-4m16 0c0-2.21-3.582-4-8-4S4 4.79 4 7m12-4v10c0 2.21-3.582 4-8 4s-8-1.79-8-4V7"></path>
+      </svg>
+      <h2 class="text-2xl font-bold">Data Architecture Excellence</h2>
+    </div>
 
     <!-- Features -->
     <div class="bg-white rounded-lg shadow-sm border border-gray-200 p-8 mb-8">
